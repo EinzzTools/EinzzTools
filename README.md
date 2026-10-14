@@ -35,44 +35,6 @@ TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/cred
 * Impressum <- https://einzzcookie.org/impressum
 
 
-# TikTrack Extension - Soon
-TikTok Osint Extension - Developed by EinzzCookie and https://einzzcookie.org/credits
-Extension feature plans:
-Here is the categorized structure organized by function:
-
-###### Content Filtering & Customization
-
-* Filter AI Posts
-* Filter Ad Posts
-* Filter Partnership Posts
-* Filter Feed based on f.e. Tags, Region, Lenght, Sound, Creator Stats, ...
-
-###### Data & Metadata Info
-
-* Profile Info
-* DM Message Info
-* Post Info
-* Music Info
-* Tag Info
-* Highlight Info
-* Story Info
-
-###### Performance & Optimization
-
-* Remove Lag Content
-
-###### Privacy & Security
-
-* Block TikTok Tracking
-
-###### Data Management
-
-* On-Page Download of Data/Posts/Messages/Comments
-
-###### Interface & Appearance
-
-* TikTok Themes
-
 
 ## Dead-Man Switch
 In the event that the lead developer (@EinzzCookie) is no longer able to maintain this project, an automated 3-month countdown is active after every update. If no update is pushed within 90 days, the complete TikTrack source code, setup guide, and documentation will be automatically released publicly to the community—with the hope that others will honor the project's legacy and continue its development.
