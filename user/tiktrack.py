@@ -4,7 +4,7 @@ import urllib.request
 import urllib.error
 import urllib.parse
 
-EMAIL = "cookie@gmail.com"
+EMAIL = "#########@gmail.com"
 KEY = "tiktrack-#####################"
 BASE = "https://einzzcookie.org/v1/"
 
