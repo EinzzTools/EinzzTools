@@ -5,8 +5,21 @@ TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/cred
 TikTrack API <- https://einzzcookie.org/api
 * The API access is free until 28-10-2026; All keys will get removed on that day.
 * Get your free API key using Stripe and enter a test data
+* Optional: To get the limit data of your API key:
+
+```python
+  import tiktrack
+  print(tiktrack.last_rate_limit)
+```
+
+  which returns for example:
+
+```json
+  {"limit": 2500, "remaining": 2438, "reset_seconds": 30140}
+```
 
 #### URL
+
 ##### General Pages
 * Homepage <- https://einzzcookie.org/
 * Blog <- https://einzzcookie.org/blog
