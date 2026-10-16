@@ -1,7 +1,7 @@
 # TikTrack Site - https://einzzcookie.org/
 TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/credits
 
-![fmhy]("https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/available/fmhy/cozy.svg")
+![fmhy](https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/available/fmhy/cozy.svg)
 ## API
 TikTrack API <- https://einzzcookie.org/api
 * The API access is free until 28-10-2026; All keys will get removed on that day.
