@@ -2,7 +2,6 @@ name: API Status Logger
 
 on:
   schedule:
-    # Runs every 1 minute
     - cron: '* * * * *'
   workflow_dispatch:
 
@@ -17,21 +16,18 @@ jobs:
 
       - name: Check API Status Code and Log
         run: |
-          # Fetch the HTTP status code of the endpoint without any secret key
           STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://einzzcookie.org/api/check")
-          
-          # Get the current UTC timestamp
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
           
-          # Check if status code is 409
           if [ "$STATUS_CODE" -eq 409 ]; then
-            echo "[$TIMESTAMP] - All Endpoints Functionable" >> status.log
+            echo "[$TIMESTAMP] All Endpoints Functionable" >> status.log
           else
-            echo "[$TIMESTAMP] - Not All Endpoints Functionable (Code: $STATUS_CODE)" >> status.log
+            echo "[$TIMESTAMP] Not All Endpoints Functionable (Code: $STATUS_CODE)" >> status.log
           fi
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update status.log [skip ci]"
-          file_pattern: status.log.github/workflows/status-logger.yml
+          file_pattern: status.log
+          branch: main
