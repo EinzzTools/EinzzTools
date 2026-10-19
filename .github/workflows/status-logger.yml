@@ -18,7 +18,7 @@ jobs:
       - name: Check API Status Code and Log
         run: |
           # Fetch the HTTP status code of the endpoint without any secret key
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://einzzcookie/api/check")
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://einzzcookie.org/api/check")
           
           # Get the current UTC timestamp
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
