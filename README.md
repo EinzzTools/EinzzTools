@@ -19,6 +19,16 @@ TikTrack API <- https://einzzcookie.org/api
   {"limit": 2500, "remaining": 2438, "reset_seconds": 30140}
 ```
 
+## Project Structure
+```text
+TikTrack-main/
+├── other/         # Utility functions (QR codes, link checker, fake sharing)
+├── user/          # User-centric modules (info, history, likes, reposts, sharing analyse, stories)
+├── video/         # Video-centric modules (downloader, comments, info, sharing analyse)
+├── LICENSE        # Project license
+└── README.md      # Documentation
+```
+
 #### URL
 
 ##### General Pages
