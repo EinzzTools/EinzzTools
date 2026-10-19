@@ -2,7 +2,7 @@ name: API Status Logger
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
