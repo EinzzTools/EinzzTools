@@ -18,11 +18,10 @@ jobs:
         run: |
           STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://einzzcookie.org/api/check")
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
-          
           if [ "$STATUS_CODE" -eq 409 ]; then
-            echo "[$TIMESTAMP] All Endpoints Functionable" >> status.log
-          else
             echo "[$TIMESTAMP] Not All Endpoints Functionable (Code: $STATUS_CODE)" >> status.log
+          else
+            echo "[$TIMESTAMP] All Endpoints Functionable" >> status.log
           fi
 
       - name: Commit and Push Changes
