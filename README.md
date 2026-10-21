@@ -1,5 +1,8 @@
 # TikTrack Site - https://einzzcookie.org/
-TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/credits
+TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/credits </br></br>
+A robust, high-performance unofficial TikTok API wrapper designed for seamless automation, data extraction, and custom scripting. 
+Built by reverse-engineering internal TikTok API structure and endpoints, this library delegates complex security challenges and signature handling to a dedicated server connection. 
+Whether you are building private scripts, analytical dashboards, or automated workflows, this wrapper simplifies interaction with TikTok's data pipeline with minimal setup.
 
 ![fmhy](https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/available/fmhy/cozy.svg)
 ## API
