@@ -7,8 +7,6 @@ Whether you are building private scripts, analytical dashboards, or automated wo
 ![fmhy](https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/available/fmhy/cozy.svg)
 ## API
 TikTrack API <- https://einzzcookie.org/api
-* The API access is free until 28-10-2026; All keys will get removed on that day.
-* Get your free API key using Stripe and enter a test data
 * Optional: To get the limit data of your API key:
 
 ```python
