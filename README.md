@@ -1,4 +1,4 @@
-# TikTrack Site - https://einzzcookie.org/
+# EinzzTools Site - https://einzzcookie.org/
 TikTok Osint Website - Developed by EinzzCookie and https://einzzcookie.org/credits </br></br>
 A robust, high-performance unofficial TikTok API wrapper designed for seamless automation, data extraction, and custom scripting. 
 Built by reverse-engineering internal TikTok API structure and endpoints, this library delegates complex security challenges and signature handling to a dedicated server connection. 
@@ -10,8 +10,8 @@ TikTrack API <- https://einzzcookie.org/api
 * Optional: To get the limit data of your API key:
 
 ```python
-  import tiktrack
-  print(tiktrack.last_rate_limit)
+  import einzztools
+  print(einzztools.last_rate_limit)
 ```
 
   which returns for example:
@@ -22,7 +22,7 @@ TikTrack API <- https://einzzcookie.org/api
 
 ## Project Structure
 ```text
-TikTrack-main/
+EinzzTools-main/
 ├── other/         # Utility functions (QR codes, link checker, fake sharing)
 ├── user/          # User-centric modules (info, history, likes, reposts, sharing analyse, stories)
 ├── video/         # Video-centric modules (downloader, comments, info, sharing analyse)
