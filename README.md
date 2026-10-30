@@ -6,7 +6,7 @@ Whether you are building private scripts, analytical dashboards, or automated wo
 
 ![fmhy](https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/available/fmhy/cozy.svg)
 ## API
-TikTrack API <- https://einzzcookie.org/api
+EinzzTools API <- https://einzzcookie.org/api
 * Optional: To get the limit data of your API key:
 
 ```python
@@ -68,4 +68,4 @@ EinzzTools-main/
 We reserve the right to modify, suspend, or terminate API keys, access tiers, request limits, and pricing plans at any time without prior notice. The API is provided on an "as-is" and "as-available" basis with no uptime guarantees. While we strive for continuous availability and accurate data collection, we make no warranties-express or implied-regarding the accuracy, completeness, or reliability of the data returned by the service.
 
 ## Dead-Man Switch
-In the event that the lead developer (@EinzzCookie) is no longer able to maintain this project, an automated 3-month countdown is active after every update. If no update is pushed within 90 days, the complete TikTrack source code, setup guide, and documentation will be automatically released publicly to the community-with the hope that others will honor the project's legacy and continue its development.
+In the event that the lead developer (@EinzzCookie) is no longer able to maintain this project, an automated 3-month countdown is active after every update. If no update is pushed within 90 days, the complete EinzzTools source code, setup guide, and documentation will be automatically released publicly to the community-with the hope that others will honor the project's legacy and continue its development.
