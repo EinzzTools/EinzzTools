@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 import json
 
 status, data = call("user/userLikes", username="tiktok", cursor="0")
