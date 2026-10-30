@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 import json
 
 status, data = call("user/userInfoHistory", secUid="MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM")
