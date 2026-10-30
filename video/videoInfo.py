@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 import json
 
 status, data = call("video/info", url="https://www.tiktok.com/@tiktok/video/123123123131")
