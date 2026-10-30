@@ -5,7 +5,7 @@ import urllib.error
 import urllib.parse
 
 EMAIL = "#########@gmail.com"
-KEY = "tiktrack-#####################"
+KEY = "einzztools-#####################"
 BASE = "https://einzzcookie.org/v1/"
 
 last_rate_limit = {}
