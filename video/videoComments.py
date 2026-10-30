@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 
 status, data = call("video/videoComments",
                     url="https://www.tiktok.com/@cbsnews/video/7691452115373395214",
