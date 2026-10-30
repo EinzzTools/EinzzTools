@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 
 status, data = call("user/userReposts", username="tiktok", cursor="0", count="30")
 print(status)
