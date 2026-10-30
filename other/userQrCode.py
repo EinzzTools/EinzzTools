@@ -1,4 +1,4 @@
-from tiktrack import call
+from einzztools import call
 import json
 
 status, data = call("other/userQrcode", userId="2131123213123", schemaType="4")
