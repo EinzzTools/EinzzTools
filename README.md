@@ -69,6 +69,7 @@ curl 'https://einzzcookie.org/v1/video/videoDownloader?url=https://vm.tiktok.com
 * Responses made with a session ID are not cacheable (`Cache-Control: no-store`).
 * The session ID and the API key are two different things: the key is for this API, the session ID is your TikTok login.
 * Download links in responses (`proxyUrl`, `proxyUrls`) point to `/v1/...`. Fetch them with the same `X-Email` / `X-API-Key` headers, plus `X-Session-Id` for private posts. Each fetch counts as one request.
+* For more informations about session ID check out https://einzzcookie.org/sessionid
 
 ### Request codes
 Every authenticated request gets a unique random request code like `req_K7M2XQ9TBHA4NVCW5R3D`. No code is ever issued twice. It is returned:
