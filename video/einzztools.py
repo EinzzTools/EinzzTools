@@ -4,11 +4,12 @@ import urllib.request
 import urllib.error
 import urllib.parse
 
-EMAIL = "#########@gmail.com"
+EMAIL = "cookie@gmail.com"
 KEY = "einzztools-#####################"
 BASE = "https://einzzcookie.org/v1/"
 
 last_rate_limit = {}
+
 
 def _read_limits(headers):
     def num(name):
@@ -22,12 +23,19 @@ def _read_limits(headers):
     }
 
 
-def call(path, **params):
+def call(path, session_id=None, save_history=True, **params):
+    """session_id: your TikTok sessionid (sent as X-Session-Id header, never in the URL).
+    save_history: False sends X-Save-History: false. The response contains requestCode."""
     global last_rate_limit
     query = urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
     req = urllib.request.Request(
         f"{BASE}{path}?{query}",
-        headers={"X-Email": EMAIL, "X-API-Key": KEY},
+        headers={
+            "X-Email": EMAIL,
+            "X-API-Key": KEY,
+            "X-Save-History": "true" if save_history else "false",
+            **({"X-Session-Id": session_id} if session_id else {}),
+        },
     )
     try:
         with urllib.request.urlopen(req) as r:
