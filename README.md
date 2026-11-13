@@ -119,14 +119,52 @@ status, one = call("history", code="req_K7M2XQ9TBHA4NVCW5R3D")   # one specific 
 * Secrets are never stored: any query parameter whose name contains `session`, `key`, `token` or `secret` is stored as `[redacted]`.
 * The same list is shown on https://einzzcookie.org/api in the "Request history" box.
 
+**Delete your history** with `DELETE /v1/history` and exactly one of these selectors (sending none, or more than one, returns `400`):
+
+| Parameter | Deletes |
+|-----------|---------|
+| `all=true` | Your entire history |
+| `from` + `to` | Entries with `from` <= time <= `to`. One of the two may be left out |
+| `last=X` | The `X` most recently logged entries (1-100000) |
+| `code=req_...` | One specific request (`404` if it is not in your history) |
+
+Timestamps are ISO 8601 (`2026-11-13T10:00:00Z`; a bare date like `2026-11-13` means 00:00 UTC) or epoch seconds / milliseconds.
+
+```python
+from einzztools import delete_history
+from datetime import datetime
+
+# 1. delete the entire history
+status, data = delete_history(all=True)
+
+# 2. delete everything between two timestamps (ISO string, epoch seconds/ms or datetime; naive datetimes count as UTC)
+status, data = delete_history(from_time="2026-11-01", to_time="2026-11-13T12:00:00Z")
+status, data = delete_history(from_time=datetime(2026, 11, 1), to_time=datetime(2026, 11, 13, 12, 0))
+
+# 3. delete the last 10 logged requests
+status, data = delete_history(last=10)
+
+# 4. delete one specific request
+status, data = delete_history(code="req_K7M2XQ9TBHA4NVCW5R3D")
+
+print(status, data["data"]["deleted"])   # e.g. 200 10
+```
+
+`delete_history` raises a `ValueError` if you pass none or more than one selector. Without the client the raw call is `DELETE /v1/history?<selector>` with the usual `X-Email` / `X-API-Key` headers.
+
+* The answer contains the number of removed entries in `data.deleted`.
+* Deleting cannot be undone. Only your own saved entries are affected.
+* Like reading, deleting is not saved to the history itself, but counts as one request towards your daily limit.
+* You can also delete entries on https://einzzcookie.org/api in the "Request history" box (per request, a time range, the last X, or everything).
+
 ### Response codes
 | Code | Meaning |
 |------|---------|
 | 200 | Success |
-| 400 | Bad parameter, invalid session ID format, or invalid `saveHistory` value |
+| 400 | Bad parameter, invalid session ID format, invalid `saveHistory` value, or an invalid / missing selector on `DELETE /v1/history` |
 | 401 / 403 | Missing headers, email and key do not match, or the subscription is not active |
 | 403 | The key is blocked (contact @EinzzCookie on Telegram) |
-| 404 | Your authentication is correct, however your API path is wrong |
+| 404 | Your authentication is correct, however your API path is wrong (or, on `DELETE /v1/history?code=`, the request code is not in your history) |
 | 429 | Daily limit reached, try again after 00:00 UTC (see the `Retry-After` header) |
 
 ## Project Structure
