@@ -34,9 +34,12 @@ jobs:
             local path="$2"
             shift 2
 
+            local body
+            body=$(mktemp)
+
             local curl_args=(
-              -s -o /dev/null -w "%{http_code}"
-              --max-time 15
+              -s -o "$body" -w "%{http_code}"
+              --max-time 45
               -G
               -H "X-Email: $API_USER"
               -H "X-API-Key: $API_KEY"
@@ -48,17 +51,21 @@ jobs:
               curl_args+=(--data-urlencode "$p")
             done
 
-            local code
-            if ! code=$(curl "${curl_args[@]}" "$BASE/$path"); then
-              code="ERR"
+            local code rc=0
+            code=$(curl "${curl_args[@]}" "$BASE/$path") || rc=$?
+            if [ "$rc" -ne 0 ]; then
+              code="ERR(curl exit $rc)"
             fi
 
             local params_display="${*:-none}"
             if [[ "$code" =~ ^2[0-9]{2}$ ]]; then
               echo "✅ $feature worked | Endpoint: GET /$path | Params: $params_display | Status: $code" | tee -a "$LOG_FILE"
             else
-              echo "❌ $feature did not work | Endpoint: GET /$path | Params: $params_display | Status: $code" | tee -a "$LOG_FILE"
+              local snippet
+              snippet=$(head -c 200 "$body" | tr '\n' ' ')
+              echo "❌ $feature did not work | Endpoint: GET /$path | Params: $params_display | Status: $code | Response: ${snippet:-empty}" | tee -a "$LOG_FILE"
             fi
+            rm -f "$body"
           }
 
           # Other endpoints
@@ -71,7 +78,7 @@ jobs:
           run_check "User Info History" "user/userInfoHistory" "secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM"
           run_check "User Likes" "user/userLikes" "username=einzzcookie" "cursor=0"
           run_check "User Reposts" "user/userReposts" "username=tiktok" "cursor=0" "count=30"
-          run_check "User Shared" "user/userShared" "url=https://www.tiktok.com/@channelnewsasia?_r=1&_t=ZG-ha512m9aGu"
+          run_check "User Shared" "user/userShared" "url=https://www.tiktok.com/@dqarkveil?_r=1&_t=ZG-9BXZAxEPvZB"
           run_check "User Story" "user/userStory" "username=einzzcookie"
 
           # Video endpoints
