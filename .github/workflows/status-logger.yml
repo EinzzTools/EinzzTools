@@ -1,32 +1,126 @@
-name: API Status Logger
+name: Status Logger
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  log-status:
+  check-endpoints:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check API Status Code and Log
-        run: |
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://einzzcookie.org/api/check")
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
-          if [ "$STATUS_CODE" -eq 409 ]; then
-            echo "[$TIMESTAMP] Not All Endpoints Functionable (Code: $STATUS_CODE)" >> status.log
-          else
-            echo "[$TIMESTAMP] All Endpoints Functionable" >> status.log
-          fi
-
-      - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          commit_message: "chore: update status.log [skip ci]"
-          file_pattern: status.log
-          branch: main
+          python-version: "3.11"
+
+      - name: Run endpoint status checks
+        env:
+          API_USER: ${{ secrets.API_USER }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os
+          import re
+          import glob
+          import urllib.request
+          import urllib.error
+          import base64
+          from datetime import datetime, timezone
+
+          api_user = os.environ.get("API_USER", "")
+          api_key = os.environ.get("API_KEY", "")
+
+          # Collect candidate URLs/endpoints from repo files
+          target_files = (
+              glob.glob("other/*.py")
+              + glob.glob("user/*.py")
+              + glob.glob("video/*.py")
+              + ["README.md"]
+          )
+
+          url_pattern = re.compile(r"https?://[^\s\"'<>()]+")
+          found_urls = []
+          for path in target_files:
+              if not os.path.exists(path):
+                  continue
+              with open(path, "r", encoding="utf-8", errors="ignore") as f:
+                  content = f.read()
+              for match in url_pattern.findall(content):
+                  cleaned = match.rstrip(".,;:")
+                  if cleaned not in found_urls:
+                      found_urls.append(cleaned)
+
+          # Map features based on the scripts in the repo
+          feature_scripts = [
+              ("Post Links", "other/postLinks.py"),
+              ("Share Fake", "other/shareFake.py"),
+              ("User QR Code", "other/userQrCode.py"),
+              ("User Info", "user/userInfo.py"),
+              ("User Info History", "user/userInfoHistory.py"),
+              ("User Likes", "user/userLikes.py"),
+              ("User Reposts", "user/userReposts.py"),
+              ("User Shared", "user/userShared.py"),
+              ("User Story", "user/userStory.py"),
+              ("Video Comments", "video/videoComments.py"),
+              ("Video Downloader", "video/videoDownloader.py"),
+              ("Video Info", "video/videoInfo.py"),
+              ("Video Shared", "video/videoShared.py"),
+          ]
+
+          auth_header = None
+          if api_user or api_key:
+              token = base64.b64encode(f"{api_user}:{api_key}".encode("utf-8")).decode("ascii")
+              auth_header = f"Basic {token}"
+
+          def check_url(url: str) -> tuple[bool, str]:
+              headers = {"User-Agent": "EinzzTools-Status-Logger/1.0"}
+              if auth_header:
+                  headers["Authorization"] = auth_header
+              if api_key:
+                  headers["X-API-Key"] = api_key
+              req = urllib.request.Request(url, headers=headers, method="GET")
+              try:
+                  with urllib.request.urlopen(req, timeout=15) as resp:
+                      code = resp.getcode()
+                      return (200 <= code < 400), f"HTTP {code}"
+              except urllib.error.HTTPError as e:
+                  return False, f"HTTP {e.code}"
+              except Exception as e:
+                  return False, str(e)
+
+          results = []
+          for idx, (feature_name, script_path) in enumerate(feature_scripts):
+              url = found_urls[idx] if idx < len(found_urls) else None
+              if not url:
+                  results.append((feature_name, False, f"No endpoint URL found for {script_path}"))
+                  continue
+              ok, detail = check_url(url)
+              results.append((feature_name, ok, f"{url} -> {detail}"))
+
+          timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+          lines = [f"=== Status Check ({timestamp}) ==="]
+          for feature_name, ok, detail in results:
+              icon = "✅" if ok else "❌"
+              status_text = "worked" if ok else "did not work"
+              summary_line = f"{icon} {feature_name} {status_text} ({detail})"
+              print(summary_line)
+              lines.append(summary_line)
+
+          with open("status.log", "a", encoding="utf-8") as log_file:
+              log_file.write("\n".join(lines) + "\n\n")
+          EOF
+
+      - name: Commit updated status.log
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status.log
+          git diff --staged --quiet || git commit -m "Update status.log"
+          git push
