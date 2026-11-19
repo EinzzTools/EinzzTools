@@ -70,7 +70,7 @@ jobs:
           run_check "User Info History" "GET" "https://einzzcookie.org/v1/user/userInfoHistory?secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM" ""
           run_check "User Likes" "GET" "https://einzzcookie.org/v1/user/userLikes?username=einzzcookie&cursor=0" ""
           run_check "User Reposts" "GET" "https://einzzcookie.org/v1/user/userReposts?username=tiktok&cursor=0&count=30" ""
-          run_check "User Shared" "GET" "https://einzzcookie.org/v1/user/userShared?url=https://www.tiktok.com/@channelnewsasia?_r=1&_t=ZG-ha512m9aGu" ""
+          run_check "User Shared" "GET" "https://einzzcookie.org/v1/user/userShared?url=https%3A%2F%2Fwww.tiktok.com%2F%40channelnewsasia%3F_r%3D1%26_t%3DZG-ha512m9aGu" ""
           run_check "User Story" "GET" "https://einzzcookie.org/v1/user/userStory?username=einzzcookie" ""
 
           # Video endpoints
