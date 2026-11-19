@@ -22,62 +22,63 @@ jobs:
         run: |
           set -u
           LOG_FILE="status.log"
+          BASE="https://einzzcookie.org/v1"
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
 
-          {
-            echo "=== Status Check ($TIMESTAMP) ==="
-          } >> "$LOG_FILE"
+          echo "=== Status Check ($TIMESTAMP) ===" >> "$LOG_FILE"
 
+          # run_check <feature> <path> [param=value ...]
+          # Values are URL-encoded by curl (-G --data-urlencode), all requests are GET.
           run_check() {
             local feature="$1"
-            local method="$2"
-            local url="$3"
-            local data="$4"
+            local path="$2"
+            shift 2
 
             local curl_args=(
               -s -o /dev/null -w "%{http_code}"
               --max-time 15
-              -X "$method"
-              -H "x-email: $API_USER"
-              -H "x-api-key: $API_KEY"
-              -H "Content-Type: application/json"
+              -G
+              -H "X-Email: $API_USER"
+              -H "X-API-Key: $API_KEY"
+              -H "X-Save-History: false"
             )
 
-            if [ -n "$data" ]; then
-              curl_args+=(-d "$data")
-            fi
+            local p
+            for p in "$@"; do
+              curl_args+=(--data-urlencode "$p")
+            done
 
             local code
-            if ! code=$(curl "${curl_args[@]}" "$url"); then
+            if ! code=$(curl "${curl_args[@]}" "$BASE/$path"); then
               code="ERR"
             fi
 
-            local data_display="${data:-none}"
+            local params_display="${*:-none}"
             if [[ "$code" =~ ^2[0-9]{2}$ ]]; then
-              echo "✅ $feature worked | Endpoint: $method $url | Data: $data_display | Status: $code" | tee -a "$LOG_FILE"
+              echo "✅ $feature worked | Endpoint: GET /$path | Params: $params_display | Status: $code" | tee -a "$LOG_FILE"
             else
-              echo "❌ $feature did not work | Endpoint: $method $url | Data: $data_display | Status: $code" | tee -a "$LOG_FILE"
+              echo "❌ $feature did not work | Endpoint: GET /$path | Params: $params_display | Status: $code" | tee -a "$LOG_FILE"
             fi
           }
 
           # Other endpoints
-          run_check "Post Links" "POST" "https://einzzcookie.org/v1/other/postLinks?url=https://tiktok.com" ""
-          run_check "Share Fake" "POST" "https://einzzcookie.org/v1/other/shareFake?videoUrl=https://www.tiktok.com/@tiktok/video/1231231123" ""
-          run_check "User QR Code" "GET" "https://einzzcookie.org/v1/other/userQrcode?userId=2131123213123&schemaType=4" ""
+          run_check "Post Links" "other/postLinks" "url=https://tiktok.com"
+          run_check "Share Fake" "other/shareFake" "videoUrl=https://www.tiktok.com/@tiktok/video/1231231123"
+          run_check "User QR Code" "other/userQrcode" "userId=2131123213123" "schemaType=4"
 
           # User endpoints
-          run_check "User Info" "GET" "https://einzzcookie.org/v1/user/userInfo?username=einzzcookie" ""
-          run_check "User Info History" "GET" "https://einzzcookie.org/v1/user/userInfoHistory?secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM" ""
-          run_check "User Likes" "GET" "https://einzzcookie.org/v1/user/userLikes?username=einzzcookie&cursor=0" ""
-          run_check "User Reposts" "GET" "https://einzzcookie.org/v1/user/userReposts?username=tiktok&cursor=0&count=30" ""
-          run_check "User Shared" "GET" "https://einzzcookie.org/v1/user/userShared?url=https%3A%2F%2Fwww.tiktok.com%2F%40channelnewsasia%3F_r%3D1%26_t%3DZG-ha512m9aGu" ""
-          run_check "User Story" "GET" "https://einzzcookie.org/v1/user/userStory?username=einzzcookie" ""
+          run_check "User Info" "user/userInfo" "username=einzzcookie"
+          run_check "User Info History" "user/userInfoHistory" "secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM"
+          run_check "User Likes" "user/userLikes" "username=einzzcookie" "cursor=0"
+          run_check "User Reposts" "user/userReposts" "username=tiktok" "cursor=0" "count=30"
+          run_check "User Shared" "user/userShared" "url=https://www.tiktok.com/@channelnewsasia?_r=1&_t=ZG-ha512m9aGu"
+          run_check "User Story" "user/userStory" "username=einzzcookie"
 
           # Video endpoints
-          run_check "Video Comments" "GET" "https://einzzcookie.org/v1/video/videoComments?url=https://www.tiktok.com/@cbsnews/video/7691452115373395214&cursor=0" ""
-          run_check "Video Downloader" "POST" "https://einzzcookie.org/v1/video/videoDownloader?url=https://www.tiktok.com/@tiktok/video/7651659857640033566" ""
-          run_check "Video Info" "GET" "https://einzzcookie.org/v1/video/info?url=https://www.tiktok.com/@tiktok/video/7651659857640033566" ""
-          run_check "Video Shared" "POST" "https://einzzcookie.org/v1/video/videoShared?url=https://vm.tiktok.com/ZGdXH5VNA/" ""
+          run_check "Video Comments" "video/videoComments" "url=https://www.tiktok.com/@cbsnews/video/7691452115373395214" "cursor=0"
+          run_check "Video Downloader" "video/videoDownloader" "url=https://www.tiktok.com/@tiktok/video/7651659857640033566"
+          run_check "Video Info" "video/info" "url=https://www.tiktok.com/@tiktok/video/7651659857640033566"
+          run_check "Video Shared" "video/videoShared" "url=https://vm.tiktok.com/ZGdXH5VNA/"
 
           echo "" >> "$LOG_FILE"
 
