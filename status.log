@@ -133,3 +133,18 @@
 [2026-11-18 12:26:22] All Endpoints Functionable
 [2026-11-18 20:58:03] All Endpoints Functionable
 [2026-11-19 02:14:16] All Endpoints Functionable
+=== Status Check (2026-11-19 10:43:13 UTC) ===
+✅ Post Links worked (https://tiktok.com -> HTTP 200)
+✅ Share Fake worked (https://www.tiktok.com/@tiktok/video/1231231123 -> HTTP 200)
+✅ User QR Code worked (https://vt.tiktok.com/ZS9UjEQrbx5UV-btjMX/ -> HTTP 200)
+❌ User Info did not work (https://einzzcookie.org/v1/ -> HTTP 403)
+❌ User Info History did not work (https://p16-sign-sg.tiktokcdn.com/tikcode-sg/7696570374343491591~tplv-tiktokx-cropcenter:720:720.webp?dr=14579&x-expires=1792018800&x-signature=G47uAlY4hb0D0wN%2FNyu8jXALzF0%3D&idc=my&ps=13740610&shcp=9b759fb9&shp=45744a80&t=4d5b0474 -> HTTP 403)
+✅ User Likes worked (https://www.tiktok.com/@channelnewsasia?_r=1&_t=ZG-ha512m9aGu -> HTTP 200)
+❌ User Reposts did not work (https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/ba67b11de451691939223e9d978e613a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=00e43db7&x-expires=1792170000&x-signature=elIDd%2Ft2qSPdOUrtnpjNjOENCmw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a -> HTTP 403)
+❌ User Shared did not work (https://p16-common-sign.tiktokcdn-eu.com/tos-useast8-p-0068-tx2/osDEKIayAATxid4XIifhL1BBXAZ8wiCZcATiAJ~tplv-tiktokx-origin.image?dr=10395&x-expires=1792170000&x-signature=kAKqYSIYZp0KLu5oCMEGWm%2FkwXA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=no1a -> HTTP 403)
+❌ User Story did not work (https://p19-common-sign.tiktokcdn-eu.com/tos-useast8-p-0068-tx2/oIiSKVaoIVstALfejHqglAI03jokC4GlIg5ejX~tplv-tiktokx-origin.image?dr=10395&x-expires=1792170000&x-signature=yZmFvvzdprRLaO6eH0TcVL1Ml0c%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=no1a -> HTTP 403)
+❌ Video Comments did not work (https://v45.tiktokcdn-eu.com/e94a86a0aac4f2eba8eef3c3c93c5deb/6ad25970/video/tos/alisg/tos-alisg-ve-37c799-sg/ogJEilqISNrDaBR0ARVeWfEVFEAR2gyyu8R0TQ/?a=1233&bti=ODszNWYuMDE6&&bt=1603&ft=_sd5EP0pC12NvjpxFF7nRfqWvlcI6IxVvYqpiX&mime_type=video_mp4&rc=M2czaWg1Ozo7ODVpNjkzOEBpM281NHM5cm5wZTMzaTczNEBjYmItYTU0XzUxLTI2YGI1YSNzZWlhMmRjZjFhLS1kMTJzcw%3D%3D&vvpl=1&l=2026101417050205D235B92019913FFF79&btag=e0008d000&sp_exp=hash_v0 -> HTTP 403)
+❌ Video Downloader did not work (https://p16-common-sign.tiktokcdn-eu.com/tos-useast2a-avt-0068-euttp/873da24d34a264864a61160a2fc2ad68e7b3~tplv-tiktokx-cropcenter:100:100.jpeg?dr=10399&refresh_token=6211b5c262e&x-expires=179221750000&x-signature=zsbFJCDkVaPpAkAQsy%2FJYvxkW8yg%3D&t=4d5b05474&ps=137402610&shp=a5d481078&shcp=81f828b70&idc=no1a -> HTTP 403)
+❌ Video Info did not work (https://p16-common-sign.tiktokcdn-eu.com/tos-useast2a-avt-0068-euttp/8753da24d34a64864a26160afc2ad68e7b3~tplv-tiktokx-cropcenter:720:720.jpeg?dr=10399&refresh_token=feb3d222d&x-expires=179261570000&x-signature=xsrFygMfjHR5H5uXc3DYDSSyxkUQ%3D&t=4d25b0474&ps=132740610&shp=a5d482078&shcp=681f88b70&idc=no1a -> HTTP 403)
+❌ Video Shared did not work (https://p16-common-sign.tiktokcdn-eu.com/tos-useast2a-avt-0068-euttp/587da2454d34a648564a56160afc2ad68e7b3~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=8690c6aef3&x-expires=172922170000&x-signature=lPxbwt1Lgi18QyLfOFZTXSbUHvrs%3D&t=4d5b04274&ps=1374660610&shp=a5d487078&shcp=817f88b70&idc=no1a -> HTTP 403)
+
