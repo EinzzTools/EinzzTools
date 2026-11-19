@@ -104,3 +104,18 @@
 ✅ Video Info worked | Endpoint: GET /video/info | Params: url=https://www.tiktok.com/@tiktok/video/7651659857640033566 | Status: 200
 ✅ Video Shared worked | Endpoint: GET /video/videoShared | Params: url=https://vm.tiktok.com/ZGdXH5VNA/ | Status: 200
 
+=== Status Check (2026-11-19 17:13:43 UTC) ===
+✅ Post Links worked | Endpoint: GET /other/postLinks | Params: url=https://tiktok.com | Status: 200
+✅ Share Fake worked | Endpoint: GET /other/shareFake | Params: videoUrl=https://www.tiktok.com/@tiktok/video/1231231123 | Status: 200
+✅ User QR Code worked | Endpoint: GET /other/userQrcode | Params: userId=2131123213123 schemaType=4 | Status: 200
+✅ User Info worked | Endpoint: GET /user/userInfo | Params: username=einzzcookie | Status: 200
+✅ User Info History worked | Endpoint: GET /user/userInfoHistory | Params: secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM | Status: 200
+✅ User Likes worked | Endpoint: GET /user/userLikes | Params: username=einzzcookie cursor=0 | Status: 200
+✅ User Reposts worked | Endpoint: GET /user/userReposts | Params: username=tiktok cursor=0 count=30 | Status: 200
+✅ User Shared worked | Endpoint: GET /user/userShared | Params: url=https://www.tiktok.com/@dqarkveil?_r=1&_t=ZG-9BXZAxEPvZB | Status: 200
+✅ User Story worked | Endpoint: GET /user/userStory | Params: username=einzzcookie | Status: 200
+✅ Video Comments worked | Endpoint: GET /video/videoComments | Params: url=https://www.tiktok.com/@cbsnews/video/7691452115373395214 cursor=0 | Status: 200
+✅ Video Downloader worked | Endpoint: GET /video/videoDownloader | Params: url=https://www.tiktok.com/@tiktok/video/7651659857640033566 | Status: 200
+✅ Video Info worked | Endpoint: GET /video/info | Params: url=https://www.tiktok.com/@tiktok/video/7651659857640033566 | Status: 200
+✅ Video Shared worked | Endpoint: GET /video/videoShared | Params: url=https://vm.tiktok.com/ZGdXH5VNA/ | Status: 200
+
