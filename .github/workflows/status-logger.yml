@@ -38,8 +38,8 @@ jobs:
               -s -o /dev/null -w "%{http_code}"
               --max-time 15
               -X "$method"
-              -u "$API_USER:$API_KEY"
-              -H "X-API-Key: $API_KEY"
+              -H "x-email: $API_USER"
+              -H "x-api-key: $API_KEY"
               -H "Content-Type: application/json"
             )
 
