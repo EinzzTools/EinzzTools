@@ -29,3 +29,18 @@
 ❌ Video Info did not work | Endpoint: GET https://einzzcookie.org/v1/video/info?url=https://www.tiktok.com/@tiktok/video/1231231231231 | Data: none | Status: ERR
 ❌ Video Shared did not work | Endpoint: POST https://einzzcookie.org/v1/video/videoShared?url=https://vm.tiktok.com/ZGdEasgda/ | Data: none | Status: 404
 
+=== Status Check (2026-11-19 16:02:04 UTC) ===
+❌ Post Links did not work | Endpoint: POST https://einzzcookie.org/v1/other/postLinks?url=https://tiktok.com | Data: none | Status: 404
+❌ Share Fake did not work | Endpoint: POST https://einzzcookie.org/v1/other/shareFake?videoUrl=https://www.tiktok.com/@tiktok/video/1231231123 | Data: none | Status: 404
+✅ User QR Code worked | Endpoint: GET https://einzzcookie.org/v1/other/userQrcode?userId=2131123213123&schemaType=4 | Data: none | Status: 200
+✅ User Info worked | Endpoint: GET https://einzzcookie.org/v1/user/userInfo?username=einzzcookie | Data: none | Status: 200
+✅ User Info History worked | Endpoint: GET https://einzzcookie.org/v1/user/userInfoHistory?secUid=MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM | Data: none | Status: 200
+✅ User Likes worked | Endpoint: GET https://einzzcookie.org/v1/user/userLikes?username=einzzcookie&cursor=0 | Data: none | Status: 200
+✅ User Reposts worked | Endpoint: GET https://einzzcookie.org/v1/user/userReposts?username=tiktok&cursor=0&count=30 | Data: none | Status: 200
+❌ User Shared did not work | Endpoint: GET https://einzzcookie.org/v1/user/userShared?url=https://www.tiktok.com/@channelnewsasia?_r=1&_t=ZG-ha512m9aGu | Data: none | Status: 404
+✅ User Story worked | Endpoint: GET https://einzzcookie.org/v1/user/userStory?username=einzzcookie | Data: none | Status: 200
+✅ Video Comments worked | Endpoint: GET https://einzzcookie.org/v1/video/videoComments?url=https://www.tiktok.com/@cbsnews/video/7691452115373395214&cursor=0 | Data: none | Status: 200
+❌ Video Downloader did not work | Endpoint: POST https://einzzcookie.org/v1/video/videoDownloader?url=https://www.tiktok.com/@tiktok/video/7651659857640033566 | Data: none | Status: 404
+✅ Video Info worked | Endpoint: GET https://einzzcookie.org/v1/video/info?url=https://www.tiktok.com/@tiktok/video/7651659857640033566 | Data: none | Status: 200
+❌ Video Shared did not work | Endpoint: POST https://einzzcookie.org/v1/video/videoShared?url=https://vm.tiktok.com/ZGdEasgda/ | Data: none | Status: 404
+
