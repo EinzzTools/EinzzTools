@@ -61,23 +61,23 @@ jobs:
           }
 
           # Other endpoints
-          run_check "Post Links" "POST" "https://example.com/api/other/post-links" '{"url":"https://example.com"}'
-          run_check "Share Fake" "POST" "https://example.com/api/other/share-fake" '{"id":"123"}'
-          run_check "User QR Code" "GET" "https://example.com/api/other/user-qr-code?username=demo" ""
+          run_check "Post Links" "POST" "https://einzzcookie.org/v1/other/post-links" '{"url":"https://example.com"}'
+          run_check "Share Fake" "POST" "https://einzzcookie.org/v1/other/share-fake" '{"id":"123"}'
+          run_check "User QR Code" "GET" "https://einzzcookie.org/v1/other/user-qr-code?username=demo" ""
 
           # User endpoints
-          run_check "User Info" "GET" "https://example.com/api/user/info?username=einzzcookie" ""
-          run_check "User Info History" "GET" "https://example.com/api/user/info-history?username=einzzcookie" ""
-          run_check "User Likes" "GET" "https://example.com/api/user/likes?username=einzzcookie" ""
-          run_check "User Reposts" "GET" "https://example.com/api/user/reposts?username=einzzcookie" ""
-          run_check "User Shared" "GET" "https://example.com/api/user/shared?username=demo" ""
-          run_check "User Story" "GET" "https://example.com/api/user/story?username=einzzcookie" ""
+          run_check "User Info" "GET" "https://einzzcookie.org/v1/user/info?username=einzzcookie" ""
+          run_check "User Info History" "GET" "https://einzzcookie.org/v1/user/info-history?username=einzzcookie" ""
+          run_check "User Likes" "GET" "https://einzzcookie.org/v1/user/likes?username=einzzcookie" ""
+          run_check "User Reposts" "GET" "https://einzzcookie.org/v1/user/reposts?username=einzzcookie" ""
+          run_check "User Shared" "GET" "https://einzzcookie.org/v1/user/shared?username=demo" ""
+          run_check "User Story" "GET" "https://einzzcookie.org/v1/user/story?username=einzzcookie" ""
 
           # Video endpoints
-          run_check "Video Comments" "GET" "https://example.com/api/video/comments?id=123" ""
-          run_check "Video Downloader" "POST" "https://example.com/api/video/downloader" '{"id":"123"}'
-          run_check "Video Info" "GET" "https://example.com/api/video/info?id=123" ""
-          run_check "Video Shared" "POST" "https://example.com/api/video/shared" '{"id":"123"}'
+          run_check "Video Comments" "GET" "https://einzzcookie.org/v1/video/comments?id=123" ""
+          run_check "Video Downloader" "POST" "https://einzzcookie.org/v1/video/downloader" '{"id":"123"}'
+          run_check "Video Info" "GET" "https://einzzcookie.org/v1/video/info?id=123" ""
+          run_check "Video Shared" "POST" "https://einzzcookie.org/v1/video/shared" '{"id":"123"}'
 
           echo "" >> "$LOG_FILE"
 
