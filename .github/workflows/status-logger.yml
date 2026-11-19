@@ -75,8 +75,8 @@ jobs:
 
           # Video endpoints
           run_check "Video Comments" "GET" "https://einzzcookie.org/v1/video/videoComments?url=https://www.tiktok.com/@cbsnews/video/7691452115373395214&cursor=0" ""
-          run_check "Video Downloader" "POST" "https://einzzcookie.org/v1/video/videoDownloader?url=https://www.tiktok.com/@tiktok/video/1231231231231" ""
-          run_check "Video Info" "GET" "https://einzzcookie.org/v1/video/info?url=https://www.tiktok.com/@tiktok/video/1231231231231" ""
+          run_check "Video Downloader" "POST" "https://einzzcookie.org/v1/video/videoDownloader?url=https://www.tiktok.com/@tiktok/video/7651659857640033566" ""
+          run_check "Video Info" "GET" "https://einzzcookie.org/v1/video/info?url=https://www.tiktok.com/@tiktok/video/7651659857640033566" ""
           run_check "Video Shared" "POST" "https://einzzcookie.org/v1/video/videoShared?url=https://vm.tiktok.com/ZGdEasgda/" ""
 
           echo "" >> "$LOG_FILE"
