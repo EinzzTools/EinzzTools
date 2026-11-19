@@ -61,7 +61,7 @@ jobs:
           }
 
           # Other endpoints
-          run_check "Post Links" "POST" "https://einzzcookie.org/v1/other/postLinks?url=https://example.com" ""
+          run_check "Post Links" "POST" "https://einzzcookie.org/v1/other/postLinks?url=https://tiktok.com" ""
           run_check "Share Fake" "POST" "https://einzzcookie.org/v1/other/shareFake?videoUrl=https://www.tiktok.com/@tiktok/video/1231231123" ""
           run_check "User QR Code" "GET" "https://einzzcookie.org/v1/other/userQrcode?userId=2131123213123&schemaType=4" ""
 
