@@ -1,1 +1,16 @@
 
+=== Status Check (2026-11-19 10:52:56 UTC) ===
+❌ Post Links did not work | Endpoint: POST https://example.com/api/other/post-links | Data: {"url":"https://example.com"} | Status: 405
+❌ Share Fake did not work | Endpoint: POST https://example.com/api/other/share-fake | Data: {"id":"123"} | Status: 405
+❌ User QR Code did not work | Endpoint: GET https://example.com/api/other/user-qr-code?username=demo | Data: none | Status: 404
+❌ User Info did not work | Endpoint: GET https://example.com/api/user/info?username=einzzcookie | Data: none | Status: 404
+❌ User Info History did not work | Endpoint: GET https://example.com/api/user/info-history?username=einzzcookie | Data: none | Status: 404
+❌ User Likes did not work | Endpoint: GET https://example.com/api/user/likes?username=einzzcookie | Data: none | Status: 404
+❌ User Reposts did not work | Endpoint: GET https://example.com/api/user/reposts?username=einzzcookie | Data: none | Status: 404
+❌ User Shared did not work | Endpoint: GET https://example.com/api/user/shared?username=demo | Data: none | Status: 404
+❌ User Story did not work | Endpoint: GET https://example.com/api/user/story?username=einzzcookie | Data: none | Status: 404
+❌ Video Comments did not work | Endpoint: GET https://example.com/api/video/comments?id=123 | Data: none | Status: 404
+❌ Video Downloader did not work | Endpoint: POST https://example.com/api/video/downloader | Data: {"id":"123"} | Status: 405
+❌ Video Info did not work | Endpoint: GET https://example.com/api/video/info?id=123 | Data: none | Status: 404
+❌ Video Shared did not work | Endpoint: POST https://example.com/api/video/shared | Data: {"id":"123"} | Status: 405
+
