@@ -57,13 +57,12 @@ jobs:
               code="ERR(curl exit $rc)"
             fi
 
-            local params_display="${*:-none}"
             if [[ "$code" =~ ^2[0-9]{2}$ ]]; then
               echo "✅ $feature worked | Endpoint: GET /$path | Status: $code" | tee -a "$LOG_FILE"
             else
               local snippet
               snippet=$(head -c 200 "$body" | tr '\n' ' ')
-              echo "❌ $feature did not work | Endpoint: GET /$path | Status: $code | tee -a "$LOG_FILE"
+              echo "❌ $feature did not work | Endpoint: GET /$path | Status: $code | Response: ${snippet:-empty}" | tee -a "$LOG_FILE"
             fi
             rm -f "$body"
           }
