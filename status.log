@@ -269,3 +269,18 @@
 ✅ Video Info worked | Endpoint: GET /video/info | Status: 200
 ✅ Video Shared worked | Endpoint: GET /video/videoShared | Status: 200
 
+=== Status Check (2026-11-24 09:35:08 UTC) ===
+✅ Post Links worked | Endpoint: GET /other/postLinks | Status: 200
+✅ Share Fake worked | Endpoint: GET /other/shareFake | Status: 200
+✅ User QR Code worked | Endpoint: GET /other/userQrcode | Status: 200
+✅ User Info worked | Endpoint: GET /user/userInfo | Status: 200
+✅ User Info History worked | Endpoint: GET /user/userInfoHistory | Status: 200
+✅ User Likes worked | Endpoint: GET /user/userLikes | Status: 200
+✅ User Reposts worked | Endpoint: GET /user/userReposts | Status: 200
+✅ User Shared worked | Endpoint: GET /user/userShared | Status: 200
+✅ User Story worked | Endpoint: GET /user/userStory | Status: 200
+✅ Video Comments worked | Endpoint: GET /video/videoComments | Status: 200
+✅ Video Downloader worked | Endpoint: GET /video/videoDownloader | Status: 200
+✅ Video Info worked | Endpoint: GET /video/info | Status: 200
+✅ Video Shared worked | Endpoint: GET /video/videoShared | Status: 200
+
